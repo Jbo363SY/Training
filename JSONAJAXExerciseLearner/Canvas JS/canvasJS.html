@@ -5,22 +5,34 @@
 <script type="text/javascript">
 
 window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer", {
-		theme: "theme2",//theme1
+    
+    var mySurvey = document.getElementById("survey");
+    mySurvey.addEventListener("change", loadData, false);
+    
+    var surveyStored = mySurvey.options[mySurvey.selectedIndex].value;
+    
+	var chart = surveyStored.Chart("chartContainer", {
+		theme: "theme1",//theme1
 		title:{
 			text: "Basic Column Chart - CanvasJS"              
 		},
-		animationEnabled: false,   // change to true
+		animationEnabled: true,   // change to true
 		data: [              
 		{
 			// Change type to "bar", "area", "spline", "pie",etc.
-			type: "column",
+			type: surveyStored,
 			dataPoints: [
-				{ label: "apple",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-				{ label: "grape",  y: 28  }
+				{ label: "Overall",  y: myData.data[manufacturerStored].quality[0].rating  },
+                
+				{ label: "Mechanical", y: myData.data[manufacturerStored].quality[1].rating  },
+                
+				{ label: "Powertrain", y: myData.data[manufacturerStored].quality[2].rating  },
+                
+				{ label: "Body",  y: myData.data[manufacturerStored].quality[3].rating  },
+                
+				{ label: "Interior",  y: myData.data[manufacturerStored].quality[4].rating  },
+                
+                { label: "Accessories", y: myData.data[manufacturerStored].quality[5].rating.value;}
 			]
 		}
 		]
